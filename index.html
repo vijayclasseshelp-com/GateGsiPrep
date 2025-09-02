@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GATE & GSI Prep Master</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="app-title">GATE & GSI Prep Master</h1>
+                <nav class="nav">
+                    <button class="nav-btn active" data-section="practice">Practice</button>
+                    <button class="nav-btn" data-section="progress">Progress</button>
+                    <button class="nav-btn" data-section="about">About</button>
+                </nav>
+            </div>
+            <div class="exam-info" id="examInfo">
+                <span id="currentExam">Select Exam Type</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <!-- Exam Selection Section -->
+            <section id="examSelection" class="section active">
+                <div class="section-header">
+                    <h2>Choose Your Exam</h2>
+                    <p>Select the exam you want to prepare for</p>
+                </div>
+                <div class="exam-cards">
+                    <div class="exam-card" data-exam="GATE">
+                        <h3>GATE Preparation</h3>
+                        <p>Graduate Aptitude Test in Engineering</p>
+                        <div class="subjects">
+                            <span>Common Section</span>
+                            <span>Geology</span>
+                            <span>Geophysics</span>
+                        </div>
+                        <button class="btn btn--primary" type="button">Start GATE Prep</button>
+                    </div>
+                    <div class="exam-card" data-exam="GSI">
+                        <h3>GSI Preparation</h3>
+                        <p>Geological Survey of India</p>
+                        <div class="subjects">
+                            <span>General Studies</span>
+                            <span>Geology/Hydrogeology</span>
+                            <span>Geophysics</span>
+                            <span>Chemistry</span>
+                        </div>
+                        <button class="btn btn--primary" type="button">Start GSI Prep</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Subject Selection Section -->
+            <section id="subjectSelection" class="section">
+                <div class="section-header">
+                    <button class="btn btn--outline back-btn" id="backToExam" type="button">← Back to Exams</button>
+                    <h2 id="subjectTitle">Select Subject</h2>
+                </div>
+                <div class="subject-grid" id="subjectGrid">
+                    <!-- Subject cards will be populated by JS -->
+                </div>
+            </section>
+
+            <!-- Topic Selection Section -->
+            <section id="topicSelection" class="section">
+                <div class="section-header">
+                    <button class="btn btn--outline back-btn" id="backToSubject" type="button">← Back to Subjects</button>
+                    <h2 id="topicTitle">Select Topic</h2>
+                    <div class="search-box">
+                        <input type="text" id="topicSearch" class="form-control" placeholder="Search topics...">
+                    </div>
+                </div>
+                <div class="topic-grid" id="topicGrid">
+                    <!-- Topic cards will be populated by JS -->
+                </div>
+            </section>
+
+            <!-- Practice Session Section -->
+            <section id="practiceSession" class="section">
+                <div class="session-header">
+                    <button class="btn btn--outline back-btn" id="backToTopics" type="button">← Back to Topics</button>
+                    <div class="session-info">
+                        <span id="questionCounter">Question 1 of 10</span>
+                        <span id="currentTopic">Topic Name</span>
+                        <span id="difficulty" class="status status--info">Medium</span>
+                    </div>
+                </div>
+                
+                <div class="question-container">
+                    <div class="question-card">
+                        <h3 id="questionText">Question text will appear here...</h3>
+                        <div class="options" id="optionsContainer">
+                            <!-- Options will be populated by JS -->
+                        </div>
+                        <div class="question-actions">
+                            <button class="btn btn--primary" id="submitAnswer" type="button" disabled>Submit Answer</button>
+                            <button class="btn btn--secondary hidden" id="nextQuestion" type="button">Next Question</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Answer Feedback Panel -->
+                <div class="feedback-panel hidden" id="feedbackPanel">
+                    <div class="feedback-content">
+                        <div class="feedback-header">
+                            <span class="feedback-result" id="feedbackResult"></span>
+                        </div>
+                        <div class="feedback-explanation" id="feedbackExplanation">
+                            <!-- Explanation will be populated by JS -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Progress Section -->
+            <section id="progressSection" class="section">
+                <div class="section-header">
+                    <h2>Your Progress</h2>
+                    <p>Track your learning journey</p>
+                </div>
+                <div class="progress-stats">
+                    <div class="stat-card">
+                        <h3 id="questionsAttempted">0</h3>
+                        <p>Questions Attempted</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 id="accuracyRate">0%</h3>
+                        <p>Accuracy Rate</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 id="topicsCompleted">0</h3>
+                        <p>Topics Practiced</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 id="timeSpent">0h</h3>
+                        <p>Time Spent</p>
+                    </div>
+                </div>
+                <div class="progress-details">
+                    <h3>Recent Activity</h3>
+                    <div class="activity-log" id="activityLog">
+                        <p>No activity yet. Start practicing to see your progress!</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- About Section -->
+            <section id="aboutSection" class="section">
+                <div class="section-header">
+                    <h2>About GATE & GSI Prep Master</h2>
+                </div>
+                <div class="about-content">
+                    <div class="about-card">
+                        <h3>AI-Powered Question Generation</h3>
+                        <p>Our advanced AI system generates unlimited practice questions tailored to your selected topics, ensuring comprehensive coverage of the syllabus.</p>
+                    </div>
+                    <div class="about-card">
+                        <h3>Detailed Explanations</h3>
+                        <p>Every wrong answer comes with detailed step-by-step explanations, helping you understand concepts thoroughly and learn from mistakes.</p>
+                    </div>
+                    <div class="about-card">
+                        <h3>Progress Tracking</h3>
+                        <p>Monitor your progress with detailed statistics, identify weak areas, and track your improvement over time.</p>
+                    </div>
+                    <div class="about-card">
+                        <h3>Comprehensive Coverage</h3>
+                        <p>Complete syllabus coverage for both GATE and GSI exams across all subjects including Geology, Geophysics, and General Studies.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
